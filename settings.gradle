@@ -1,2 +1,2 @@
-include ':app', ':business_common', ':SingleCall'
+include ':app', ':business-common', ':singlecall', ':groupcall'
 rootProject.name='ARouterDemo'

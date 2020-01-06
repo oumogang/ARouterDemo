@@ -17,67 +17,55 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        navigationDelay(1000);
-
     }
 
-    private void navigationDelay(int i) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                navigationOnUi();
-            }
-        }).start();
+    public void routeToGroupCallByUri(View view){
+        Uri uri = Uri.parse("/groupcall/activity/activity");
+        ARouter.getInstance().build(uri).withString("name","中国移动")
+                .withString("number","10086")
+                .withString("message","GroupCall界面,MainActivity通过ARouter URI 启动")
+                .withLong("date",System.currentTimeMillis())
+                .withOptionsCompat(getDefaultCompat())//跳转动画
+                .navigation();
     }
 
-    private void navigationOnUi() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                navigationNow();
-            }
-        });
+    public void routeToGroupCallByPath(View view){
+        String path = "/groupcall/activity/activity";
+        ARouter.getInstance().build(path).withString("name","中国移动")
+                .withString("number","10086")
+                .withString("message","GroupCall界面,MainActivity通过ARouter path 启动")
+                .withLong("date",System.currentTimeMillis())
+                .withOptionsCompat(getDefaultCompat())//跳转动画
+                .navigation();
     }
 
-    private void navigationNow() {
-        // 1. 应用内简单的跳转(通过URL跳转在'进阶用法'中)
-//        ARouter.getInstance().build("/call/activity").navigation();
-//        ARouter.getInstance().build("/call/activity")
-//                .withString("name","中国移动")
-//                .withString("number","10086")
-//                .withString("message","这是MainActivity通过ARouter启动的界面")
-//                .withLong("date",System.currentTimeMillis())
-//                .navigation();
-
-        // 转场动画(API16+)
+    /**
+     *  转场动画(API16+)
+     * @return
+     */
+    private ActivityOptionsCompat getDefaultCompat() {
         View v = getWindow().getDecorView();
         ActivityOptionsCompat compat = ActivityOptionsCompat.
                 makeScaleUpAnimation(v, v.getWidth() / 2, v.getHeight() / 2, 0, 0);
-
-        ARouter.getInstance().build("/singlecall/activity")
-                .withString("name","中国移动")
-                .withString("number","10086")
-                .withString("message","这是MainActivity通过ARouter启动的界面 /singlecall/activity")
-                .withLong("date",System.currentTimeMillis())
-                .withOptionsCompat(compat)//跳转动画
-                .navigation();
-
-        routeByUri(compat);
+        return  compat;
     }
 
-    private void routeByUri(ActivityOptionsCompat compat) {
+    public void routeToSingleCallByUri(View view){
         Uri uri = Uri.parse("/singlecall/activity");
         ARouter.getInstance().build(uri).withString("name","中国移动")
                 .withString("number","10086")
-                .withString("message","这是MainActivity通过ARouter URI 启动的界面")
+                .withString("message","SingleCall界面,MainActivity通过ARouter URI 启动")
                 .withLong("date",System.currentTimeMillis())
-                .withOptionsCompat(compat)//跳转动画
+                .withOptionsCompat(getDefaultCompat())//跳转动画
+                .navigation();
+    }
+    public void routeToSingleCallByPath(View view){
+        String path = "/singlecall/activity";
+        ARouter.getInstance().build(path).withString("name","中国移动")
+                .withString("number","10086")
+                .withString("message","SingleCall界面,MainActivity通过ARouter path 启动")
+                .withLong("date",System.currentTimeMillis())
+                .withOptionsCompat(getDefaultCompat())//跳转动画
                 .navigation();
     }
 }

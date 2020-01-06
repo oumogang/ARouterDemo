@@ -1,35 +1,48 @@
-package com.omg.arouter;
+package com.omg.groupcall.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.omg.arouter.databinding.ActivityCallBinding;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.omg.business_common.contact.Contact;
+import com.omg.groupcall.R;
+import com.omg.groupcall.databinding.ActivityGroupCallBinding;
 
-@Route(path = "/call/activity")
-public class CallActivity extends Activity {
-    ActivityCallBinding mViewDataBinding;
+@Route(path = "/groupcall/activity/activity")
+public class GroupCallActivity extends Activity {
+    ActivityGroupCallBinding mViewDataBinding;
     Contact mContact;
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
+    // 注入条件是字段名与key一致。
+    @Autowired
+    public String name;
+    @Autowired
+    public String message;
+    @Autowired
+    public String number;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_call);
-        mContact = getContact();
-        String msg = getMessage();
+        mViewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_group_call);
+        // init field
+        ARouter.getInstance().inject(this);
+        // use field
+        String msg = /*getMessage()*/message;
         showTitle(msg);
+        mContact = getContact();
+        // use field
+        mContact.setName(name);
+        mContact.setNumber(number);
         showContactData(mContact);
     }
 
