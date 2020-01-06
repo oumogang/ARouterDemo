@@ -26,7 +26,7 @@ public class SingleCallActivity extends Activity {
     @Autowired
     public String name;
     @Autowired
-    public String message1;
+    public String message;
     @Autowired
     public String number;
     @Override
@@ -36,7 +36,7 @@ public class SingleCallActivity extends Activity {
         // init field
         ARouter.getInstance().inject(this);
         // use field
-        String msg = /*getMessage()*/message1;
+        String msg = /*getMessage()*/message;
         showTitle(msg);
         mContact = getContact();
         // use field
