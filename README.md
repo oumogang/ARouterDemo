@@ -21,3 +21,9 @@ throw new IllegalArgumentException("path must not be null.");
 if (!hasInit) {
     throw new InitException("ARouterCore::Init::Invoke init(context) first!");
 } else {}
+
+
+20190107 修改点
+1.增加app启动module的手动启动方式；
+2.支持config.gradle全局变量配置；
+3.支持通过修改asApp变量，切换module app/lib的编译方式，方便module单独测。
