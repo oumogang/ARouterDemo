@@ -30,33 +30,26 @@ public class GroupCallActivity extends Activity {
     public String message;
     @Autowired
     public String number;
+    @Autowired
+    public Contact contact;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_group_call);
         // init field
         ARouter.getInstance().inject(this);
-        // use field
-        String msg = /*getMessage()*/message;
-        showTitle(msg);
-        mContact = getContact();
-        // use field
-        mContact.setName(name);
-        mContact.setNumber(number);
-        showContactData(mContact);
+        updateViews();
     }
 
-    private void showTitle(String msg) {
-        if (TextUtils.isEmpty(msg))return;
-        mViewDataBinding.title.setText(msg);
-    }
-
-    private String getMessage() {
-        Bundle extras = getIntent().getExtras();
-        if (extras == null){
-            return null;
-        }
-        return extras.getString("message");
+    private void updateViews() {
+        mViewDataBinding.title.setText(TextUtils.isEmpty(message)?"no message":message);
+//        mViewDataBinding.name.setText(TextUtils.isEmpty(name)?"no name":name);
+//        mViewDataBinding.number.setText(TextUtils.isEmpty(number)?"no number":number);
+        Contact c = new Contact();
+        c.setName(TextUtils.isEmpty(name)?"no name":name);
+        c.setNumber(TextUtils.isEmpty(number)?"no number":number);
+        mViewDataBinding.setContact(new Contact(name,number));
+        mViewDataBinding.contact.setText((null==contact)?"no contact object":(contact.toString()+"["+contact.name+","+contact.number+"]"));
     }
 
     private Contact getContact() {
@@ -68,9 +61,5 @@ public class GroupCallActivity extends Activity {
         String number = extras.getString(Contact.KEY_NUMBER);
         Contact contact = new Contact(name,number);
         return contact;
-    }
-
-    private void showContactData(Contact contact) {
-        mViewDataBinding.setContact(contact);
     }
 }

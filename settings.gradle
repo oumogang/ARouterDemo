@@ -1,2 +1,4 @@
-include ':app', ':business-common', ':singlecall', ':groupcall'
+include ':app', ':business-common', ':singlecall', ':groupcall', ':business', ':myapplication'
+//include ':myapplication'
+//project(':myapplication').projectDir = new File('../../MVVMApplication/myapplication')
 rootProject.name='ARouterDemo'

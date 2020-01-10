@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.alibaba.android.arouter.routes.ARouter$$Group$$singlecall;
 import com.omg.business_common.contact.Contact;
 import com.omg.singlecall.databinding.ActivitySingleCallBinding;
 

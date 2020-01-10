@@ -15,20 +15,28 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="150dp"/>
 
 
         <Button
             android:id="@+id/route_to_groupcall_by_path_bt"
-            android:layout_width="260dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="routeToGroupCallByPath"
             android:text="Go to GroupCall by path" />
 
         <Button
+            android:id="@+id/route_to_groupcall_by_path_with_object_bt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="routeToGroupCallByPathWithObject"
+            android:text="Go to GroupCall by path with object" />
+
+        <Button
             android:id="@+id/route_to_groupcall_by_uri_bt"
-            android:layout_width="260dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="routeToGroupCallByUri"
@@ -36,7 +44,7 @@
 
         <Button
             android:id="@+id/route_to_singlecall_by_path_bt"
-            android:layout_width="260dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="routeToSingleCallByPath"
@@ -44,11 +52,18 @@
 
         <Button
             android:id="@+id/route_to_singlecall_by_uri_bt"
-            android:layout_width="260dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="routeToSingleCallByUri"
             android:text="Go to SingleCall by uri" />
+        <Button
+            android:id="@+id/route_to_singlecall_by_path_with_callback_bt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="routeToSingleCallByPathWithCallBack"
+            android:text="Go to SingleCall with CallBack" />
     </LinearLayout>
 
 

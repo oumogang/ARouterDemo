@@ -1,14 +1,11 @@
 package com.omg.arouter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.omg.arouter.databinding.ActivityCallBinding;
