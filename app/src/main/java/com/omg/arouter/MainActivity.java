@@ -154,4 +154,18 @@ public class MainActivity extends AppCompatActivity {
                 .withOptionsCompat(getDefaultCompat())//跳转动画
                 .navigation(this,navCallback );
     }
+
+
+    //@Route(path = "/login/activity")
+    /**
+     * path 启动 dagger2 LoginActivity
+     * @param view
+     */
+    public void routeToLogin(View view){
+        String path = "/login/activity";
+        ARouter.getInstance().build(path)
+                .withOptionsCompat(getDefaultCompat())//跳转动画
+                .navigation();
+    }
+
 }

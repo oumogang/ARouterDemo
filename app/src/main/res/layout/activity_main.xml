@@ -64,6 +64,14 @@
             android:layout_gravity="center"
             android:onClick="routeToSingleCallByPathWithCallBack"
             android:text="Go to SingleCall with CallBack" />
+
+        <Button
+            android:id="@+id/route_to_login_bt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="routeToLogin"
+            android:text="Go to LoginActivity" />
     </LinearLayout>
 
 

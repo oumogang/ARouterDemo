@@ -49,6 +49,7 @@ dependencies {
     if (!rootProject.ext.asApp.toBoolean()) {
         implementation project(path: ':singlecall')
         implementation project(path: ':groupcall')
+        implementation project(path: ':login-mvp-dagger')
     }
     implementation project(path: ':business-common')
 //    implementation project(path: ':myapplication')
